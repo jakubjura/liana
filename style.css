@@ -10,6 +10,7 @@
 
 html {
     scroll-behavior: smooth;
+    background-attachment: fixed;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
     color: #333;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
+    position: relative;
 }
 
 .container {
@@ -122,6 +124,33 @@ body {
     animation: slideInUp 0.8s ease;
 }
 
+.hero-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.decoration-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: float 2s ease-in-out infinite;
+}
+
+.decoration-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.decoration-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.decoration-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
 @keyframes slideInDown {
     from {
         opacity: 0;
@@ -141,6 +170,340 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* ===========================
+   DALŠÍCH ANIMACE
+   =========================== */
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(102, 126, 234, 1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   SPLASH EFEKT
+   =========================== */
+
+.splash {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, rgba(102, 126, 234, 0.4) 70%, rgba(102, 126, 234, 0) 100%);
+    animation: splashOut 0.6s ease-out forwards;
+}
+
+@keyframes splashOut {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        transform: translate(-40px, -40px);
+    }
+}
+
+/* ===========================
+   INTERAKTIVNÍ PRVKY
+   =========================== */
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 0.6s ease-out;
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+.flip {
+    animation: flip 0.8s ease-in-out;
+}
+
+.wave {
+    animation: wave 0.8s ease-in-out;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* ===========================
+   REVEAL ANIMACE
+   =========================== */
+
+.hidden-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal {
+    animation: reveal 0.6s ease-out forwards;
+}
+
+.hobby-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hobby-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.hobby-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.gallery-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.gallery-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* ===========================
+   HOVER EFEKTY NA KARTÁCH
+   =========================== */
+
+.hobby-card {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hobby-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.hobby-card:hover::after {
+    left: 100%;
+}
+
+/* ===========================
+   NAVIGAČNÉ LINKY
+   =========================== */
+
+.nav-links a.active-link {
+    color: #667eea;
+}
+
+.nav-links a.active-link::after {
+    width: 100%;
+}
+
+/* ===========================
+   BUTTONS ANIMACE
+   =========================== */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.btn:active::before {
+    animation: buttonRipple 0.6s ease-out;
+}
+
+@keyframes buttonRipple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   BACKGROUND ANIMACE
+   =========================== */
+
+/* Subtle background animations */
+
+@keyframes slideBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Loading state pro galerii */
+.gallery-item:not([data-loaded]) {
+    animation: loadingPulse 2s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+    0%, 100% {
+        background-color: #f0f4ff;
+    }
+    50% {
+        background-color: #e8ecff;
     }
 }
 
@@ -202,6 +565,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+    animation: shimmerMove 0.6s ease-in-out;
 }
 
 .gallery-item img {
@@ -211,8 +594,22 @@ body {
     transition: transform 0.3s ease;
 }
 
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(1deg);
+}
+
+@keyframes shimmerMove {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .gallery-note {
@@ -261,6 +658,12 @@ body {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.hobby-card:hover .hobby-icon {
+    transform: scale(1.3) rotateZ(15deg);
+    animation: bounce 0.6s ease-in-out;
 }
 
 .hobby-card h3 {
@@ -317,12 +720,30 @@ body {
     border-radius: 8px;
     transition: all 0.3s ease;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.links-list a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.links-list a:hover::before {
+    left: 100%;
 }
 
 .links-list a:hover {
     background: #667eea;
     color: white;
-    transform: translateX(5px);
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .social-links {
@@ -347,8 +768,9 @@ body {
 }
 
 .social-links a:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    transform: scale(1.15) rotateZ(15deg);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    animation: bounce 0.4s ease-in-out;
 }
 
 /* ===========================
@@ -362,6 +784,11 @@ body {
     text-align: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 60px;
+}
+
+.contact-section:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
 .contact-section h2 {
@@ -400,12 +827,27 @@ body {
 
 .btn-primary {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 200% 200%;
     color: white;
+    animation: gradientShift 3s ease infinite;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.5);
+    animation: gradientShift 1.5s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .btn-secondary {

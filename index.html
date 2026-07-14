@@ -24,6 +24,11 @@
         <div class="container">
             <h1>Vítej na mé stránce</h1>
             <p>Jsem Liana, a rád si užívám různorodé aktivity</p>
+            <div class="hero-decoration">
+                <span class="decoration-dot"></span>
+                <span class="decoration-dot"></span>
+                <span class="decoration-dot"></span>
+            </div>
         </div>
     </header>
 
@@ -131,6 +136,141 @@
                     });
                 }
             });
+        });
+
+        // Scroll reveal animace
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hobby-card, .gallery-item').forEach(el => {
+            el.classList.add('hidden-reveal');
+            observer.observe(el);
+        });
+
+        // Interaktivní ikony - animace na hover
+        document.querySelectorAll('.hobby-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.classList.add('bounce');
+                setTimeout(() => this.classList.remove('bounce'), 600);
+            });
+        });
+
+        // Konfety efekt na kliknutí na sociální ikony
+        document.querySelectorAll('.social-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Přidej splash efekt
+                const rect = this.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                createSplash(x, y);
+            });
+        });
+
+        function createSplash(x, y) {
+            const splash = document.createElement('div');
+            splash.className = 'splash';
+            splash.style.left = x + 'px';
+            splash.style.top = y + 'px';
+            document.body.appendChild(splash);
+            
+            setTimeout(() => splash.remove(), 600);
+        }
+
+        // Animace projektů na scroll
+        const cards = document.querySelectorAll('.hobby-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = (index * 0.1) + 's';
+        });
+
+        // Pulse efekt na CTA tlačítka
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.classList.add('pulse');
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.classList.remove('pulse');
+            });
+        });
+
+        // Counter animace - čísla se zvyšují
+        function animateCounter(element, target, duration = 1000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Parallax efekt při scrollu
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrollPosition = window.pageYOffset;
+            hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+        });
+
+        // Aktivní navigační link podle pozice
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+
+        // Efekt při načtení stránky
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            
+            // Animate header text
+            const heroH1 = document.querySelector('.hero h1');
+            if (heroH1) {
+                heroH1.classList.add('slide-in-left');
+            }
+            
+            const heroP = document.querySelector('.hero p');
+            if (heroP) {
+                heroP.classList.add('slide-in-right');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + H pro scroll na home
+            if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+                e.preventDefault();
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            }
         });
     </script>
 </body>
