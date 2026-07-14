@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Liana - osobní stránka o mých zálibách">
+    <title>Liana | Domů</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Liana</h1>
+            <button class="menu-toggle" aria-label="Přepnout menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home">Domů</a></li>
+                <li><a href="#hobbies">Zálibly</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <h1>Vítej na mé stránce</h1>
+            <p>Jsem Liana, a rád si užívám různorodé aktivity</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="hobbies" class="hobbies">
+            <h2>Moje zálibly</h2>
+            
+            <div class="hobby-grid">
+                <article class="hobby-card hamster">
+                    <div class="hobby-icon">🐹</div>
+                    <h3>Chov křečků</h3>
+                    <p>Pečuji o své oblíbené křečky:</p>
+                    <ul class="hamster-list">
+                        <li><strong>Malina</strong> ✨</li>
+                        <li><strong>Speedy</strong> ✨</li>
+                    </ul>
+                    <p>Jsou to úžasní malinké kamarádi, kteří mě každý den potěší svou energií a veselým chováním.</p>
+                </article>
+
+                <article class="hobby-card violin">
+                    <div class="hobby-icon">🎻</div>
+                    <h3>Hraní na housle</h3>
+                    <p>Hudba je mou vášní. Hraji na housle a jsem součástí hudebního souboru.</p>
+                    <p>Klasická hudba, komorní hudba a společné muzicírování mi přináší radost a umožňuje mi vyjádřit své emoce skrze tóny.</p>
+                </article>
+
+                <article class="hobby-card hockey">
+                    <div class="hobby-icon">🏒</div>
+                    <h3>Hokejbal</h3>
+                    <p>Hokejbal mě baví! Zde jsou moje profily:</p>
+                    <div class="links-list">
+                        <a href="https://www.hokejbal.cz/hrac?id=49963" target="_blank" rel="noopener">Hokejbal.cz</a>
+                        <a href="https://cechyzapad.cmshb.cz/hrac?id=49963" target="_blank" rel="noopener">Čechy západ</a>
+                        <a href="https://rebelpraha.cz/match/84" target="_blank" rel="noopener">Rebel Praha</a>
+                    </div>
+                    <p>Můžeš mě sledovat také na sociálních sítích:</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/skrebelpraha/" target="_blank" rel="noopener" title="Facebook">f</a>
+                        <a href="https://www.instagram.com/p/DQqvk5wgE9y/" target="_blank" rel="noopener" title="Instagram">📷</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Dejte mi vědět</h2>
+            <p>Máš zájem se podělit o svoje zálibly nebo se mnou být v kontaktu? Jsem otevřená novým přátelstvím a zajímavým projektům!</p>
+            <div class="cta-buttons">
+                <a href="https://www.instagram.com" class="btn btn-primary" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com" class="btn btn-secondary" target="_blank">Facebook</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Liana. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
